@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styles from './App.css';
+import { dark } from './styles/palette.css';
 import * as counterActions from './actions/counterActions';
 
 @connect(state => ({
@@ -19,8 +20,9 @@ class App extends Component {
 
   render() {
     const { counter, increment, decrement, reset } = this.props;
+    console.log(dark);
     return (
-      <div className={styles.container}>
+      <div className={styles.container} >
         <button onClick={increment}>+</button>
         <h1 onClick={reset}>{counter}</h1>
         <button onClick={decrement}>-</button>

@@ -2,29 +2,52 @@ import React, { Component } from 'react';
 import styles from './Card.css';
 
 class Card extends Component {
-
-  constructor(props){
-    super(props);
-    this.state = {
-      stateButton: 'no-clicked',
-    };
+  state = {
+    hasError: false,
+    loading: true,
+    name: '',
   }
 
-  onClick() {
-    const newState = { stateButton: 'clicked' };
-    this.setState( newState );
+  componentWillMount() {
+    console.log('Antes');
+  }
+
+  componentDidMount() {
+    console.log('Despues');
+    fetch('https://swapi.co/api/people/1')
+      .then((res) => res.json())
+      .then(res => {
+        this.setState({
+          name: res.name,
+          loading: false,
+        })
+      })
+
+  }
+
+  imageClicked = () => {
+    this.setState({ hasError: !this.state.hasError });
   }
 
   render() {
-    const { message } = this.props;
+    const { image, title, content } = this.props;
+    const { loading, name } = this.state;
+
+    if(loading) return <h2>Loading...</h2>;
     return (
       <div className={ styles.container }>
-        <h1>{ message }</h1>
-        <h1>evento button { this.state.stateButton }</h1>
-        <button onClick={ () => this.onClick() } >Button</button>
+        <h1>{ title }</h1>
+        <p>{ content }</p>
+        {image && <img src={image} alt="Imagen" onClick={this.imageClicked} />}
       </div>
     );
   }
+}
+
+Card.defaultProps = {
+  image: '',
+  title: '',
+  content: '',
 }
 
 export default Card;

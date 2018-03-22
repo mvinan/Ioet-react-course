@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import styles from './App.css';
 import { dark } from './styles/palette.css';
 import * as counterActions from './actions/counterActions';
+import Card from './components/Card/Card';
+
+import Modal from 'Components/Modal/Modal';
 
 @connect(state => ({
   counter: state.counter
@@ -12,20 +15,39 @@ import * as counterActions from './actions/counterActions';
   reset: counterActions.reset,
 })
 class App extends Component {
+  state = {
+    visible: false
+  }
+
   static defaultProps = {
     increment: () => null,
     decrement: () => null,
     reset: () => null,
   }
 
+  toggleModal = () => {
+    this.setState(({ visible }) => ({ visible: !visible }));
+  }
+
   render() {
     const { counter, increment, decrement, reset } = this.props;
-    console.log(dark);
+    const { visible } = this.state;
+
     return (
       <div className={styles.container} >
         <button onClick={increment}>+</button>
         <h1 onClick={reset}>{counter}</h1>
         <button onClick={decrement}>-</button>
+
+        <button onClick={this.toggleModal}>Show Modal</button>
+
+        <Card image='http://via.placeholder.com/350x150'/>
+
+        {visible &&
+          <Modal dismiss={this.toggleModal}>
+            <h2>Portal</h2>
+          </Modal>
+        }
       </div>
     );
   }

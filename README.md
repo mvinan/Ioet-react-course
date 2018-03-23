@@ -10,9 +10,9 @@
   - [Redux](https://es.redux.js.org/)
   - [React Extension](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)
 
-- #3 - Redux Basics.
-- #4 - Creando Componentes en React, React 16: Fragments, Portales, Error Boundaries y Autobinding.
-- #5 - Mejores practicas y patrones para crear componentes en ReactJS, mantener Inmutabilidad: Concat, Spread Operators, usar Propiedades de Clase, usar JSX - React JS.
+- [x] - #3 - Redux Basics.
+- [x] - #4 - Creando Componentes en React, React 16: Fragments, Portales, Error Boundaries y Autobinding.
+- [x] - #5 - Mejores practicas y patrones para crear componentes en ReactJS, mantener Inmutabilidad: Concat, Spread Operators, usar Propiedades de Clase, usar JSX - React JS.
 - #6 - Estilos en React Js - Css modules
 - #7 - Type check con PropTypes, Flow
 - #8 - Eventos en el Dom y Referencias a los elementos del DOM con React.

@@ -5,7 +5,6 @@ class Card extends Component {
   state = {
     hasError: false,
     loading: true,
-    name: '',
   }
 
   componentWillMount() {
@@ -21,8 +20,7 @@ class Card extends Component {
           name: res.name,
           loading: false,
         })
-      })
-
+      });
   }
 
   imageClicked = () => {
@@ -30,15 +28,17 @@ class Card extends Component {
   }
 
   render() {
-    const { image, title, content } = this.props;
-    const { loading, name } = this.state;
+    const { title, content, data } = this.props;
+    const { loading } = this.state;
 
     if(loading) return <h2>Loading...</h2>;
     return (
       <div className={ styles.container }>
         <h1>{ title }</h1>
         <p>{ content }</p>
-        {image && <img src={image} alt="Imagen" onClick={this.imageClicked} />}
+        {(data || []).map(user => {
+          return <h3 key={`${user.name}`}>{user.name}</h3>
+        })}
       </div>
     );
   }

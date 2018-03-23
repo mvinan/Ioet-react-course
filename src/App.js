@@ -46,6 +46,7 @@ class App extends Component {
         {visible &&
           <Modal dismiss={this.toggleModal}>
             <h2>Portal</h2>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae iusto rerum tenetur, ratione reiciendis, delectus quibusdam aliquid ipsam, assumenda dolor temporibus vero laudantium optio! Consequatur atque nesciunt voluptas pariatur voluptatibus?</p>
           </Modal>
         }
       </div>

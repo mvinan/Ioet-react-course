@@ -1,25 +1,32 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
+import { withInfo } from '@storybook/addon-info';
 
 import Card from 'Components/Card/Card';
 
 const lorem = 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda autem temporibus laborum deleniti beatae obcaecati, enim accusamus porro itaque? Hic accusamus molestiae optio distinctio explicabo. Officia ipsa libero qui dolore?';
 const data = [
-  {name: 'Lola'},
-  {name: 'Luis'},
-  {name: 'Santiago'},
-  {name: 'Jorge'},
-  {name: 'Raul'},
+  {name: 'Lola', age: '28'},
 ]
 
 storiesOf('Card', module)
-  .add('Card', () => {
+  .add('Card', withInfo(
+  )(() => {
     return (
-      <Card
-        title='Hola Mundo!'
-        content={ lorem }
-        data={data}
-      />
+      <React.Fragment>
+        <Card
+          title='Hola Mundo!'
+          content={ lorem }
+          data={data}
+        />
+
+        <Card
+          title='Hola Mundo!'
+          content={ lorem }
+          data={data}
+          red
+        />
+      </React.Fragment>
     );
-  })
+  }))

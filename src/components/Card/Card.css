@@ -1,7 +1,19 @@
+@value dark: red;
+
 .container {
   background: white;
   border-radius: 10px;
-  border: 1px solid gray;
   width: 500px;
   padding: 10px;
+
+  & p{
+    color: red;
+    font-size: responsive 10px 40px;
+  }
+}
+
+.other {
+  & p {
+    color: black !important;
+  }
 }

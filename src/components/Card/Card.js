@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import styles from './Card.css';
+import PropTypes from 'prop-types';
+import styles, { dark } from './Card.css';
+import classNames from 'classnames/bind';
+
+const cx = classNames.bind(styles);
 
 class Card extends Component {
   state = {
@@ -28,12 +32,12 @@ class Card extends Component {
   }
 
   render() {
-    const { title, content, data } = this.props;
+    const { title, content, data, red = false } = this.props;
     const { loading } = this.state;
 
     if(loading) return <h2>Loading...</h2>;
     return (
-      <div className={ styles.container }>
+      <div className={ cx( styles.container, { [styles.other]: red } ) }>
         <h1>{ title }</h1>
         <p>{ content }</p>
         {(data || []).map(user => {
@@ -46,8 +50,17 @@ class Card extends Component {
 
 Card.defaultProps = {
   image: '',
-  title: '',
+  title: 'Hola',
   content: '',
 }
+
+Card.propTypes = {
+  title: PropTypes.string,
+  content: PropTypes.string,
+  data: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+  })),
+  red: PropTypes.bool,
+};
 
 export default Card;
